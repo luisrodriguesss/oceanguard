@@ -1,5 +1,5 @@
 export interface Integrante {
-  id: number
+  id: string
   nome: string
   rm: string
   turma: string

@@ -1,16 +1,33 @@
-import { useParams, Link, Navigate } from 'react-router-dom'
-import { integrantes } from '../data/integrantes'
+import { useParams, useNavigate } from 'react-router-dom'
+import { listaIntegrantes } from '../data/integrantes'
 
-function AvatarPlaceholder({ nome }: { nome: string }) {
+function IconeGithub() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+    </svg>
+  )
+}
+
+function IconeLinkedin() {
+  return (
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+      <rect x="2" y="9" width="4" height="12" />
+      <circle cx="4" cy="4" r="2" />
+    </svg>
+  )
+}
+
+function Avatar({ nome }: { nome: string }) {
   const iniciais = nome
     .split(' ')
     .slice(0, 2)
     .map((n) => n[0])
     .join('')
     .toUpperCase()
-
   return (
-    <div className="w-32 h-32 rounded-full bg-ocean-500/20 border-2 border-ocean-500/40 flex items-center justify-center">
+    <div className="w-[160px] h-[160px] rounded-lg bg-ocean-500/20 border-2 border-ocean-500/40 flex items-center justify-center mx-auto mb-4">
       <span className="text-4xl font-bold text-ocean-400">{iniciais}</span>
     </div>
   )
@@ -18,92 +35,78 @@ function AvatarPlaceholder({ nome }: { nome: string }) {
 
 export default function IntegrantesDetalhes() {
   const { id } = useParams<{ id: string }>()
-  const integrante = integrantes.find((i) => i.id === Number(id))
+  const navegar = useNavigate()
+
+  const integrante = listaIntegrantes.find((i) => i.id === id)
 
   if (!integrante) {
-    return <Navigate to="/integrantes" replace />
+    return (
+      <main className="px-4 py-6 md:px-[5%] md:py-8 text-white">
+        <section className="bg-navy-800 border border-navy-700 rounded-2xl p-5 text-center md:p-8">
+          <h2 className="text-ocean-400 text-xl font-semibold mb-4">
+            Integrante não encontrado
+          </h2>
+          <button
+            onClick={() => navegar('/integrantes')}
+            className="mt-4 px-5 py-2 bg-ocean-600 text-white rounded-lg font-semibold hover:bg-ocean-500 transition-colors duration-300"
+          >
+            Voltar
+          </button>
+        </section>
+      </main>
+    )
   }
 
   return (
-    <div className="text-white">
+    <main className="px-4 py-6 md:px-[5%] md:py-8 xl:px-[12%] xl:py-12 text-white">
+      <section className="bg-navy-800 border border-navy-700 rounded-2xl p-5 w-full text-center md:p-8 md:max-w-[500px] md:mx-auto">
 
-      <section className="bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 py-20">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <button
+          onClick={() => navegar('/integrantes')}
+          className="mb-6 px-4 py-2 bg-navy-700 text-gray-300 rounded-lg font-semibold hover:bg-ocean-600 hover:text-white transition-colors duration-300"
+        >
+          Voltar
+        </button>
 
-          {/* voltar */}
-          <Link
-            to="/integrantes"
-            className="inline-flex items-center gap-2 text-sm text-gray-400 hover:text-ocean-400 transition-colors mb-8"
-          >
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 17l-5-5m0 0l5-5m-5 5h12" />
-            </svg>
-            Voltar para integrantes
-          </Link>
-
-          {/* perfil */}
-          <div className="bg-navy-800 border border-navy-700 rounded-2xl p-8">
-            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6">
-
-              {integrante.foto ? (
-                <img
-                  src={integrante.foto}
-                  alt={integrante.nome}
-                  className="w-32 h-32 rounded-full object-cover border-2 border-ocean-500/40 flex-shrink-0"
-                />
-              ) : (
-                <div className="flex-shrink-0">
-                  <AvatarPlaceholder nome={integrante.nome} />
-                </div>
-              )}
-
-              <div className="text-center sm:text-left">
-                <h1 className="text-2xl sm:text-3xl font-bold text-white mb-1">
-                  {integrante.nome}
-                </h1>
-                <p className="text-ocean-400 font-medium mb-2">{integrante.cargo}</p>
-                <div className="flex flex-wrap justify-center sm:justify-start gap-2 mb-4">
-                  <span className="text-xs bg-navy-700 text-gray-300 px-3 py-1 rounded-full">
-                    {integrante.rm}
-                  </span>
-                  <span className="text-xs bg-navy-700 text-gray-300 px-3 py-1 rounded-full">
-                    {integrante.turma}
-                  </span>
-                </div>
-                <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                  {integrante.descricao}
-                </p>
-
-                <div className="flex flex-wrap justify-center sm:justify-start gap-3">
-                  
-                    href={integrante.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-navy-700 hover:bg-navy-600 text-sm text-white transition-colors"
-                  >
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z" />
-                    </svg>
-                    GitHub
-                  </a>
-                  
-                    href={integrante.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-ocean-500/10 hover:bg-ocean-500/20 border border-ocean-500/30 text-sm text-ocean-400 transition-colors"
-                  >
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                    </svg>
-                    LinkedIn
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="bg-navy-900 border border-navy-700 rounded-2xl p-5 mt-4 md:p-6">
+          {integrante.foto ? (
+            <img
+              src={integrante.foto}
+              alt={`Foto de ${integrante.nome}`}
+              className="w-[160px] h-[160px] rounded-lg object-cover mb-4 mx-auto"
+            />
+          ) : (
+            <Avatar nome={integrante.nome} />
+          )}
+          <h2 className="text-xl font-semibold text-white md:text-2xl">{integrante.nome}</h2>
+          <p className="text-sm text-ocean-400 mt-1">{integrante.cargo}</p>
+          <p className="text-xs text-gray-500 mt-1">{integrante.rm}</p>
+          <p className="text-xs text-gray-500">{integrante.turma}</p>
+          <p className="mt-4 text-sm text-gray-400 md:text-base">{integrante.descricao}</p>
         </div>
-      </section>
 
-    </div>
+        <div className="mt-6 flex justify-center gap-4">
+          <a
+            href={integrante.github}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 bg-navy-700 hover:bg-ocean-600 hover:text-white text-ocean-400 transition-all duration-300 px-4 py-2 rounded-full text-sm font-medium"
+          >
+            <IconeGithub />
+            GitHub
+          </a>
+          <a
+            href={integrante.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-2 bg-navy-700 hover:bg-blue-600 hover:text-white text-blue-400 transition-all duration-300 px-4 py-2 rounded-full text-sm font-medium"
+          >
+            <IconeLinkedin />
+            LinkedIn
+          </a>
+        </div>
+
+      </section>
+    </main>
   )
 }
