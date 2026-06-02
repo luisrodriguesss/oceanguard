@@ -1,4 +1,7 @@
 import type { Integrante } from '../types'
+import fotoLuis from '../assets/img/fotoluis.png'
+import fotoKichimoto from '../assets/img/fotokichimoto.png'
+import fotoGabriel from '../assets/img/fotogabriel.png'
 
 export const listaIntegrantes: Integrante[] = [
   {
@@ -6,18 +9,18 @@ export const listaIntegrantes: Integrante[] = [
     nome: 'Luis Fillipe Seripieri',
     rm: 'RM567918',
     turma: '1TDSPB',
-    foto: '',
+    foto: fotoLuis,
     github: 'https://github.com/luisrodriguesss',
     linkedin: 'https://www.linkedin.com/in/luis-seripieri-1bb360395/',
     cargo: 'Front-end Developer',
-    descricao: 'Estudante de Front-End apaixonado por tecnologia e impacto social.',
+    descricao: 'Estudante apaixonado por tecnologia e impacto social.',
   },
   {
     id: 'kichimoto',
     nome: 'Luiz Felipe Kichimoto',
     rm: 'RM567726',
     turma: '1TDSPB',
-    foto: '',
+    foto: fotoKichimoto,
     github: 'https://github.com/luizkichimoto',
     linkedin: 'https://www.linkedin.com/feed/',
     cargo: 'Back-end Developer',
@@ -28,7 +31,7 @@ export const listaIntegrantes: Integrante[] = [
     nome: 'Gabriel Rocha Souza',
     rm: 'RM567023',
     turma: '1TDSPB',
-    foto: '',
+    foto: fotoGabriel,
     github: 'https://github.com/GabrielCreates',
     linkedin: 'https://www.linkedin.com/feed/',
     cargo: 'Data Engineer',
