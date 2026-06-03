@@ -20,15 +20,10 @@ function IconeLinkedin() {
 }
 
 function Avatar({ nome }: { nome: string }) {
-  const iniciais = nome
-    .split(' ')
-    .slice(0, 2)
-    .map((n) => n[0])
-    .join('')
-    .toUpperCase()
+  const iniciais = nome.split(' ').slice(0, 2).map((n) => n[0]).join('').toUpperCase()
   return (
-    <div className="w-[180px] h-[180px] rounded-lg bg-ocean-500/20 border-2 border-ocean-500/40 flex items-center justify-center mx-auto mb-3">
-      <span className="text-4xl font-bold text-ocean-400">{iniciais}</span>
+    <div className="w-[180px] h-[180px] rounded-lg bg-teal-100 border-2 border-teal-300 flex items-center justify-center mx-auto mb-3">
+      <span className="text-4xl font-bold text-teal-600">{iniciais}</span>
     </div>
   )
 }
@@ -37,21 +32,21 @@ export default function Integrantes() {
   const navegar = useNavigate()
 
   return (
-    <main className="px-4 py-6 md:px-[5%] md:py-8 xl:px-[12%] xl:py-12 text-white">
+    <main className="px-4 py-6 md:px-[5%] md:py-8 xl:px-[12%] xl:py-12">
 
-      <section className="mb-8 bg-navy-800 border border-navy-700 rounded-2xl p-5 md:p-8">
-        <h2 className="text-ocean-400 text-xl font-semibold mb-4 border-l-4 border-ocean-600 pl-3 md:text-2xl">
+      <section className="mb-8 bg-white border border-teal-100 rounded-2xl p-5 md:p-8">
+        <h2 className="text-teal-600 text-xl font-semibold mb-4 border-l-4 border-teal-400 pl-3 md:text-2xl">
           Quem Somos
         </h2>
-        <p className="mt-2 text-sm text-gray-400 md:text-base">
+        <p className="mt-2 text-sm text-gray-600 md:text-base">
           Somos um grupo de estudantes da FIAP apaixonados por tecnologia e sustentabilidade.
           Desenvolvemos o OceanGuard para aplicar inteligência espacial no combate à pesca ilegal
           nas águas brasileiras.
         </p>
       </section>
 
-      <section className="mb-8 bg-navy-800 border border-navy-700 rounded-2xl p-5 md:p-8">
-        <h2 className="text-ocean-400 text-xl font-semibold mb-8 border-l-4 border-ocean-600 pl-3 md:text-2xl">
+      <section className="mb-8 bg-white border border-teal-100 rounded-2xl p-5 md:p-8">
+        <h2 className="text-teal-600 text-xl font-semibold mb-8 border-l-4 border-teal-400 pl-3 md:text-2xl">
           Nosso Time
         </h2>
         <div className="flex flex-col items-center gap-8 md:flex-row md:flex-wrap md:justify-center md:gap-10">
@@ -59,7 +54,7 @@ export default function Integrantes() {
             <div
               key={integrante.id}
               onClick={() => navegar(`/integrantes/${integrante.id}`)}
-              className="bg-navy-900 border border-navy-700 rounded-2xl w-full max-w-[280px] p-5 text-center cursor-pointer hover:-translate-y-2 hover:border-ocean-600 transition-all duration-300 md:w-[45%] xl:w-[260px]"
+              className="bg-teal-50 border border-teal-100 rounded-2xl w-full max-w-[280px] p-5 text-center cursor-pointer hover:-translate-y-2 hover:border-teal-400 hover:shadow-md transition-all duration-300 md:w-[45%] xl:w-[260px]"
             >
               {integrante.foto ? (
                 <img
@@ -70,8 +65,8 @@ export default function Integrantes() {
               ) : (
                 <Avatar nome={integrante.nome} />
               )}
-              <h3 className="text-lg text-white mt-1 font-semibold">{integrante.nome}</h3>
-              <p className="text-sm text-ocean-400 mt-1">{integrante.cargo}</p>
+              <h3 className="text-lg text-teal-900 mt-1 font-semibold">{integrante.nome}</h3>
+              <p className="text-sm text-teal-600 mt-1">{integrante.cargo}</p>
               <p className="text-xs text-gray-500 mt-1">{integrante.rm}</p>
               <p className="text-xs text-gray-500">{integrante.turma}</p>
             </div>
@@ -79,32 +74,32 @@ export default function Integrantes() {
         </div>
       </section>
 
-      <section className="mb-6 bg-navy-800 border border-navy-700 rounded-2xl p-5 md:p-8">
-        <h3 className="text-lg font-semibold mb-4 text-white md:text-xl">Redes Sociais</h3>
+      <section className="mb-6 bg-white border border-teal-100 rounded-2xl p-5 md:p-8">
+        <h3 className="text-lg font-semibold mb-4 text-teal-900 md:text-xl">Redes Sociais</h3>
         <div className="grid grid-cols-2 gap-x-8 gap-y-3 text-sm md:text-base">
           <div className="flex flex-col gap-3">
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">GitHub</p>
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">GitHub</p>
             {listaIntegrantes.map((integrante) => (
               <a
                 key={integrante.id}
                 href={integrante.github}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 text-ocean-400 hover:text-ocean-300 hover:underline"
+                className="flex items-center gap-2 text-teal-600 hover:text-teal-800 hover:underline"
               >
                 <IconeGithub /> {integrante.nome.split(' ')[0]}
               </a>
             ))}
           </div>
           <div className="flex flex-col gap-3">
-            <p className="text-xs font-semibold text-gray-500 uppercase tracking-wider">LinkedIn</p>
+            <p className="text-xs font-semibold text-gray-400 uppercase tracking-wider">LinkedIn</p>
             {listaIntegrantes.map((integrante) => (
               <a
                 key={integrante.id}
                 href={integrante.linkedin}
                 target="_blank"
                 rel="noreferrer"
-                className="flex items-center gap-2 text-blue-400 hover:text-blue-300 hover:underline"
+                className="flex items-center gap-2 text-blue-600 hover:text-blue-800 hover:underline"
               >
                 <IconeLinkedin /> {integrante.nome.split(' ')[0]}
               </a>
