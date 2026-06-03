@@ -2,9 +2,9 @@ import { useEffect } from 'react'
 import { MapContainer, TileLayer, Marker, Popup, Polygon, useMap } from 'react-leaflet'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
-import { useMapData } from './useMapData'
-import { areasProtegidasMock } from './mockData'
-import type { Embarcacao, Alerta } from './types'
+import { useMapData } from '../hooks/useMapData'
+import { areasProtegidasMock } from '../data/mockData'
+import type { Embarcacao, Alerta } from '../types'
 
 // Corrige ícones padrão do Leaflet com Vite
 delete (L.Icon.Default.prototype as unknown as Record<string, unknown>)._getIconUrl
