@@ -15,9 +15,29 @@ interface NavLinksProps {
 }
 
 export default function NavLinks({ onClick, mobile = false }: NavLinksProps) {
-  const base = mobile
-    ? 'block py-3 px-4 rounded-lg text-sm font-medium transition-colors hover:bg-navy-700 hover:text-ocean-400'
-    : 'text-sm font-medium transition-colors hover:text-ocean-400'
+  if (mobile) {
+    return (
+      <>
+        {links.map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            end={link.to === '/'}
+            onClick={onClick}
+            className={({ isActive }) =>
+              `block py-2.5 px-4 rounded-lg text-sm font-medium transition-colors ${
+                isActive
+                  ? 'bg-teal-50 text-teal-700 font-semibold'
+                  : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
+              }`
+            }
+          >
+            {link.label}
+          </NavLink>
+        ))}
+      </>
+    )
+  }
 
   return (
     <>
@@ -28,7 +48,11 @@ export default function NavLinks({ onClick, mobile = false }: NavLinksProps) {
           end={link.to === '/'}
           onClick={onClick}
           className={({ isActive }) =>
-            `${base} ${isActive ? 'text-ocean-400' : 'text-gray-300'}`
+            `relative text-sm font-medium transition-colors pb-0.5 ${
+              isActive
+                ? 'text-teal-600 after:absolute after:bottom-0 after:left-0 after:w-full after:h-px after:bg-teal-500'
+                : 'text-gray-500 hover:text-gray-900'
+            }`
           }
         >
           {link.label}
