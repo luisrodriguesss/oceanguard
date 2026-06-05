@@ -161,8 +161,9 @@ export default function Alertas() {
     return a.status === filtro
   })
 
-  const totalPendentes = alertas.filter((a) => a.status === 'EM_ANALISE').length
-  const totalResolvidos = alertas.filter((a) => a.status === 'ENCERRADO').length
+  const totalAbertos = alertas.filter((a) => a.status === 'ABERTO').length
+  const totalEmAnalise = alertas.filter((a) => a.status === 'EM_ANALISE').length
+  const totalEncerrados = alertas.filter((a) => a.status === 'ENCERRADO').length
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -175,18 +176,22 @@ export default function Alertas() {
       </div>
 
       {/* Cards de resumo */}
-      <div className="grid grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-4 gap-4 mb-6">
         <div className="bg-white border border-gray-200 rounded-xl p-4">
           <p className="text-xs text-gray-400 mb-1">Total</p>
           <p className="text-2xl font-semibold text-gray-800">{alertas.length}</p>
         </div>
         <div className="bg-orange-50 border border-orange-100 rounded-xl p-4">
-          <p className="text-xs text-gray-400 mb-1">Pendentes</p>
-          <p className="text-2xl font-semibold text-orange-600">{totalPendentes}</p>
+          <p className="text-xs text-gray-400 mb-1">Abertos</p>
+          <p className="text-2xl font-semibold text-orange-600">{totalAbertos}</p>
+        </div>
+        <div className="bg-yellow-50 border border-yellow-100 rounded-xl p-4">
+          <p className="text-xs text-gray-400 mb-1">Em Análise</p>
+          <p className="text-2xl font-semibold text-yellow-600">{totalEmAnalise}</p>
         </div>
         <div className="bg-green-50 border border-green-100 rounded-xl p-4">
-          <p className="text-xs text-gray-400 mb-1">Resolvidos</p>
-          <p className="text-2xl font-semibold text-green-600">{totalResolvidos}</p>
+          <p className="text-xs text-gray-400 mb-1">Encerrados</p>
+          <p className="text-2xl font-semibold text-green-600">{totalEncerrados}</p>
         </div>
       </div>
 
