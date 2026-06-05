@@ -1,8 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import type { Alerta } from '../types'
 
-const API_BASE_URL = 'https://defesa-azul.vercel.app/' 
-const USAR_MOCK = true
+// const API_BASE_URL = 'https://defesa-azul.vercel.app/' 
+const API_BASE_URL = 'https://defesa-azul.onrender.com'
+const USAR_MOCK = false
 
 const alertasMock: Alerta[] = [
   {
@@ -12,7 +13,7 @@ const alertasMock: Alerta[] = [
     latitude: -23.8,
     longitude: -43.2,
     areaProtegida: 'APA Litoral Sul',
-    status: 'PENDENTE',
+    status: 'EM_ANALISE',
     timestamp: new Date(Date.now() - 1000 * 60 * 5).toISOString(),
   },
   {
@@ -22,7 +23,7 @@ const alertasMock: Alerta[] = [
     latitude: -20.3,
     longitude: -38.9,
     areaProtegida: 'Reserva Marinha Norte',
-    status: 'PENDENTE',
+    status: 'EM_ANALISE',
     timestamp: new Date(Date.now() - 1000 * 60 * 18).toISOString(),
   },
   {
@@ -32,7 +33,7 @@ const alertasMock: Alerta[] = [
     latitude: -25.1,
     longitude: -44.5,
     areaProtegida: 'APA Litoral Sul',
-    status: 'RESOLVIDO',
+    status: 'EM_ANALISE',
     timestamp: new Date(Date.now() - 1000 * 60 * 60 * 2).toISOString(),
   },
   {
@@ -42,12 +43,12 @@ const alertasMock: Alerta[] = [
     latitude: -22.0,
     longitude: -41.0,
     areaProtegida: 'Reserva Marinha Norte',
-    status: 'RESOLVIDO',
+    status: 'ENCERRADO',
     timestamp: new Date(Date.now() - 1000 * 60 * 60 * 5).toISOString(),
   },
 ]
 
-type Filtro = 'TODOS' | 'PENDENTE' | 'RESOLVIDO'
+type Filtro = 'TODOS' | 'ABERTO' | 'EM_ANALISE' | 'ENCERRADO'
 
 function formatarDataHora(iso: string): string {
   return new Date(iso).toLocaleString('pt-BR', {
@@ -60,11 +61,19 @@ function formatarDataHora(iso: string): string {
 }
 
 function BadgeStatus({ status }: { status: Alerta['status'] }) {
-  if (status === 'PENDENTE') {
+  if (status === 'ABERTO') {
     return (
       <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-600 border border-orange-200">
         <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
-        Pendente
+        Aberto
+      </span>
+    )
+  }
+  else if (status === 'EM_ANALISE') {
+    return (
+      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold bg-orange-50 text-orange-600 border border-orange-200">
+        <span className="w-1.5 h-1.5 rounded-full bg-orange-500 animate-pulse" />
+        Em Análise
       </span>
     )
   }
@@ -104,7 +113,7 @@ export default function Alertas() {
         await new Promise((res) => setTimeout(res, 600))
         setAlertas(alertasMock)
       } else {
-        const res = await fetch(`${API_BASE_URL}/api/alertas`)
+        const res = await fetch(`${API_BASE_URL}/alerta/queryJoin`)
         if (!res.ok) throw new Error(`Erro ${res.status}: não foi possível carregar os alertas.`)
         const dados: Alerta[] = await res.json()
         setAlertas(dados)
@@ -127,17 +136,17 @@ export default function Alertas() {
       if (USAR_MOCK) {
         await new Promise((res) => setTimeout(res, 500))
         setAlertas((prev) =>
-          prev.map((a) => (a.id === id ? { ...a, status: 'RESOLVIDO' } : a))
+          prev.map((a) => (a.id === id ? { ...a, status: 'ENCERRADO' } : a))
         )
       } else {
-        const res = await fetch(`${API_BASE_URL}/api/alertas/${id}`, {
+        const res = await fetch(`${API_BASE_URL}/alerta/api/${id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ status: 'RESOLVIDO' }),
+          body: JSON.stringify({ status: 'ENCERRADO' }),
         })
         if (!res.ok) throw new Error(`Erro ${res.status}: não foi possível resolver o alerta.`)
         setAlertas((prev) =>
-          prev.map((a) => (a.id === id ? { ...a, status: 'RESOLVIDO' } : a))
+          prev.map((a) => (a.id === id ? { ...a, status: 'ENCERRADO' } : a))
         )
       }
     } catch (e) {
@@ -152,8 +161,8 @@ export default function Alertas() {
     return a.status === filtro
   })
 
-  const totalPendentes = alertas.filter((a) => a.status === 'PENDENTE').length
-  const totalResolvidos = alertas.filter((a) => a.status === 'RESOLVIDO').length
+  const totalPendentes = alertas.filter((a) => a.status === 'EM_ANALISE').length
+  const totalResolvidos = alertas.filter((a) => a.status === 'ENCERRADO').length
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
@@ -193,7 +202,7 @@ export default function Alertas() {
 
       {/* Filtros */}
       <div className="flex items-center gap-2 mb-4">
-        {(['TODOS', 'PENDENTE', 'RESOLVIDO'] as Filtro[]).map((f) => (
+        {(['TODOS', 'ABERTO', 'EM_ANALISE', 'ENCERRADO'] as Filtro[]).map((f) => (
           <button
             key={f}
             onClick={() => setFiltro(f)}
@@ -203,7 +212,7 @@ export default function Alertas() {
                 : 'bg-white border border-gray-200 text-gray-600 hover:border-gray-300 hover:text-gray-900'
             }`}
           >
-            {f === 'TODOS' ? 'Todos' : f === 'PENDENTE' ? 'Pendentes' : 'Resolvidos'}
+            {f === 'TODOS' ? 'Todos' : f === 'EM_ANALISE' ? 'Em Análise' : f === 'ENCERRADO' ? "Encerrado" : "Aberto"}
           </button>
         ))}
         <span className="ml-auto text-xs text-gray-400">
@@ -245,7 +254,7 @@ export default function Alertas() {
                       <BadgeStatus status={alerta.status} />
                     </td>
                     <td className="px-4 py-3">
-                      {alerta.status === 'PENDENTE' ? (
+                      {alerta.status === 'EM_ANALISE' ? (
                         <button
                           onClick={() => resolverAlerta(alerta.id)}
                           disabled={resolvendo === alerta.id}
