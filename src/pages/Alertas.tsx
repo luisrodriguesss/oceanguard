@@ -139,7 +139,7 @@ export default function Alertas() {
           prev.map((a) => (a.id === id ? { ...a, status: 'ENCERRADO' } : a))
         )
       } else {
-        const res = await fetch(`${API_BASE_URL}/alerta/api/${id}`, {
+        const res = await fetch(`${API_BASE_URL}/alerta/status/${id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ status: 'ENCERRADO' }),
@@ -259,7 +259,7 @@ export default function Alertas() {
                       <BadgeStatus status={alerta.status} />
                     </td>
                     <td className="px-4 py-3">
-                      {alerta.status === 'EM_ANALISE' ? (
+                      {(alerta.status === 'ABERTO' || alerta.status === 'EM_ANALISE') ? (
                         <button
                           onClick={() => resolverAlerta(alerta.id)}
                           disabled={resolvendo === alerta.id}
