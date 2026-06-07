@@ -4,7 +4,7 @@ import { embarcacoesMock, alertasMock } from '../data/mockData'
 
 // Quando a API estiver pronta, troque as duas constantes abaixo:
 const API_BASE_URL = 'https://defesa-azul.onrender.com' // ex: 'https://sua-api.vercel.app'
-const USAR_MOCK = true  // mude para false quando a API estiver no ar
+const USAR_MOCK = false  // mude para false quando a API estiver no ar
 
 const POLLING_INTERVAL_MS = 3600000 // atualiza a cada 3.600 segundos (tempo distante para não estressar o banco de dados e evitar o user_limit)
 
