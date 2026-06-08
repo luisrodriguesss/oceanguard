@@ -2,6 +2,7 @@ import type { Integrante } from '../types'
 import fotoLuis from '../assets/img/fotoluis.png'
 import fotoKichimoto from '../assets/img/fotokichimoto.png'
 import fotoGabriel from '../assets/img/fotogabriel.png'
+import fotoKenji from '../assets/img/fotokenji.jpeg'
 
 export const listaIntegrantes: Integrante[] = [
   {
@@ -23,6 +24,17 @@ export const listaIntegrantes: Integrante[] = [
     foto: fotoKichimoto,
     github: 'https://github.com/luizkichimoto',
     linkedin: 'https://www.linkedin.com/feed/',
+    cargo: 'Back-end Developer',
+    descricao: 'Desenvolvedor focado em criar interfaces modernas e acessiveis.',
+  },
+  {
+    id: 'kenji',
+    nome: 'Kenji Fernandes Wakabayashi',
+    rm: 'RM568156',
+    turma: '1TDSPB',
+    foto: fotoKenji,
+    github: 'https://github.com/KenjiFW13',
+    linkedin: 'https://www.linkedin.com/in/kenji-fernandes-wakabayashi/',
     cargo: 'Back-end Developer',
     descricao: 'Desenvolvedor focado em criar interfaces modernas e acessiveis.',
   },

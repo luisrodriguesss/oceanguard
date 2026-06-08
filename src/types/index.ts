@@ -40,7 +40,7 @@ export interface Alerta {
   latitude: number
   longitude: number
   areaProtegida: string
-  status: 'PENDENTE' | 'RESOLVIDO'
+  status: 'ABERTO' | 'EM_ANALISE' | 'ENCERRADO'
   timestamp: string
   velocidade?: number
   dataHora?: string

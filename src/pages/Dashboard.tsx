@@ -62,7 +62,7 @@ interface PainelStatusProps {
 }
 
 function PainelStatus({ embarcacoes, alertas, loading, ultimaAtualizacao, atualizar }: PainelStatusProps) {
-  const alertasPendentes = alertas.filter((a) => a.status === 'PENDENTE')
+  const alertasPendentes = alertas.filter((a) => a.status === 'EM_ANALISE')
 
   return (
     <div className="bg-white border border-gray-200 rounded-xl p-4 flex flex-col gap-4">
@@ -115,7 +115,7 @@ export default function Dashboard() {
   const { embarcacoes, alertas, loading, erro, ultimaAtualizacao, atualizar } = useMapData()
 
   const mmsiComAlerta = new Set(
-    alertas.filter((a) => a.status === 'PENDENTE').map((a) => a.mmsi)
+    alertas.filter((a) => a.status === 'EM_ANALISE').map((a) => a.mmsi)
   )
 
   return (
@@ -204,7 +204,7 @@ export default function Dashboard() {
               })}
 
               {alertas
-                .filter((a) => a.status === 'PENDENTE')
+                .filter((a) => a.status === 'EM_ANALISE')
                 .map((alerta) => (
                   <Marker
                     key={`alerta-${alerta.id}`}

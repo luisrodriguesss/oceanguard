@@ -33,7 +33,7 @@ export const alertasMock: Alerta[] = [
     latitude: -23.8,
     longitude: -43.2,
     areaProtegida: 'APA Litoral Sul',
-    status: 'PENDENTE',
+    status: 'EM_ANALISE',
     timestamp: new Date().toISOString(),
   },
   {
@@ -43,7 +43,7 @@ export const alertasMock: Alerta[] = [
     latitude: -20.3,
     longitude: -38.9,
     areaProtegida: 'Reserva Marinha Norte',
-    status: 'PENDENTE',
+    status: 'EM_ANALISE',
     timestamp: new Date(Date.now() - 1000 * 60 * 8).toISOString(),
   },
 ]

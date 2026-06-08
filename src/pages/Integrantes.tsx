@@ -49,29 +49,36 @@ export default function Integrantes() {
         <h2 className="text-teal-600 text-xl font-semibold mb-8 border-l-4 border-teal-400 pl-3 md:text-2xl">
           Nosso Time
         </h2>
-        <div className="flex flex-col items-center gap-8 md:flex-row md:flex-wrap md:justify-center md:gap-10">
-          {listaIntegrantes.map((integrante) => (
-            <div
-              key={integrante.id}
-              onClick={() => navegar(`/integrantes/${integrante.id}`)}
-              className="bg-teal-50 border border-teal-100 rounded-2xl w-full max-w-[280px] p-5 text-center cursor-pointer hover:-translate-y-2 hover:border-teal-400 hover:shadow-md transition-all duration-300 md:w-[45%] xl:w-[260px]"
-            >
-              {integrante.foto ? (
-                <img
-                  src={integrante.foto}
-                  alt={`Foto de ${integrante.nome}`}
-                  className="w-[180px] h-[180px] rounded-lg object-cover mb-3 mx-auto"
-                />
-              ) : (
-                <Avatar nome={integrante.nome} />
-              )}
-              <h3 className="text-lg text-teal-900 mt-1 font-semibold">{integrante.nome}</h3>
-              <p className="text-sm text-teal-600 mt-1">{integrante.cargo}</p>
-              <p className="text-xs text-gray-500 mt-1">{integrante.rm}</p>
-              <p className="text-xs text-gray-500">{integrante.turma}</p>
-            </div>
-          ))}
+          <div className="flex flex-wrap justify-center gap-8">
+    {listaIntegrantes.map((integrante) => (
+      <div
+        key={integrante.id}
+        onClick={() => navegar(`/integrantes/${integrante.id}`)}
+        className="bg-teal-50 border border-teal-100 rounded-2xl p-5 text-center cursor-pointer hover:-translate-y-2 hover:border-teal-400 hover:shadow-md transition-all duration-300 w-[260px] h-[380px] flex flex-col items-center"
+      >
+        <div className="w-[180px] h-[180px] flex-none mb-3">
+          {integrante.foto ? (
+            <img
+              src={integrante.foto}
+              alt={`Foto de ${integrante.nome}`}
+              className="w-full h-full rounded-lg object-cover"
+            />
+          ) : (
+            <Avatar nome={integrante.nome} />
+          )}
         </div>
+        
+        <div className="flex flex-col flex-grow justify-center w-full">
+          <h3 className="text-lg text-teal-900 font-semibold leading-tight">{integrante.nome}</h3>
+          <p className="text-sm text-teal-600 mt-1">{integrante.cargo}</p>
+          <div className="mt-4">
+            <p className="text-xs text-gray-500">{integrante.rm}</p>
+            <p className="text-xs text-gray-500">{integrante.turma}</p>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
       </section>
 
       <section className="mb-6 bg-white border border-teal-100 rounded-2xl p-5 md:p-8">
