@@ -45,7 +45,7 @@ export const listaIntegrantes: Integrante[] = [
     turma: '1TDSPB',
     foto: fotoGabriel,
     github: 'https://github.com/GabrielCreates',
-    linkedin: 'https://www.linkedin.com/feed/',
+    linkedin: 'https://www.linkedin.com/in/gabrielrochaads/',
     cargo: 'Data Engineer',
     descricao: 'Entusiasta de design e desenvolvimento web com foco em UX.',
   },
