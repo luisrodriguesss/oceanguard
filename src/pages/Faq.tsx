@@ -13,7 +13,8 @@ const faqs: FaqItem[] = [
   { question: 'Em quanto tempo um alerta é gerado?', answer: 'O sistema atualiza os dados em no máximo 2 segundos após a carga da API (RNF01). A detecção e geração de alertas ocorre automaticamente durante o processamento de cada lote de dados coletados.' },
   { question: 'Quem pode usar o OceanGuard?', answer: 'O sistema é voltado para gestores ambientais, órgãos de fiscalização marítima (como a Marinha do Brasil e IBAMA), pesquisadores e qualquer autoridade responsável pela proteção das Zonas de Exclusão Econômica brasileiras.' },
   { question: 'O histórico de alertas é mantido?', answer: 'Sim. Pela regra de negócio RN04, o histórico de posições das embarcações nunca é deletado. O sistema mantém 12 meses de dados para fins de auditoria e análise de padrões.' },
-  { question: 'Quais tecnologias foram usadas no desenvolvimento?', answer: 'Python para ingestão de dados e ML, Oracle Database para armazenamento, Java com Quarkus para a API REST, e React + Vite + TypeScript com Tailwind CSS para o front-end. A arquitetura segue o padrão de microsserviços com processamento assíncrono.' },
+  { question: 'Quais tecnologias foram usadas no desenvolvimento?', answer: 'Python para ingestão de dados e ML, Oracle Database para armazenamento, Java com Quarkus para a API REST, e React com Vite, TypeScript e Tailwind CSS para o front-end. A visualização cartográfica utiliza a biblioteca Leaflet. A arquitetura segue o padrão de microsserviços com processamento assíncrono.' },
+  { question: 'O sistema funciona em dispositivos móveis?', answer: 'Sim. A interface do OceanGuard foi desenvolvida com design responsivo utilizando Tailwind CSS, adaptando-se a diferentes tamanhos de tela. O dashboard com mapa interativo e a listagem de alertas são acessíveis tanto em desktops quanto em tablets e smartphones.' },
 ]
 
 function FaqItem({ item }: { item: FaqItem }) {
