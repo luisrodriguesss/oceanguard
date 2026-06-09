@@ -8,7 +8,7 @@ export default function Footer() {
 
           <div>
             <p className="text-sm font-semibold text-gray-900 mb-1.5">
-              Ocean<span className="text-teal-600">Guard</span>
+              Defesa<span className="text-teal-600">Azul</span>
             </p>
             <p className="text-sm text-gray-500 leading-relaxed">
               Plataforma de inteligência marítima para combate à pesca ilegal
