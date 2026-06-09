@@ -59,7 +59,7 @@ export default function Sobre() {
               <span className="block text-teal-500">dos oceanos</span>
             </h1>
             <p className="text-lg text-teal-700 leading-relaxed">
-              O OceanGuard nasceu da Global Solution 2026/1 da FIAP com o objetivo
+              A Defesa Azul nasceu da Global Solution 2026/1 da FIAP com o objetivo
               de aplicar inteligência artificial e dados satelitais no combate à
               pesca ilegal nas águas brasileiras.
             </p>
