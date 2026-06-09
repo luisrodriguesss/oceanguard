@@ -71,7 +71,7 @@ export default function Home() {
             </h1>
 
             <p className="text-lg text-teal-700 leading-relaxed mb-8 max-w-2xl">
-              O OceanGuard combate a pesca ilegal nas águas brasileiras combinando
+              O Defesa Azul combate a pesca ilegal nas águas brasileiras combinando
               rastreamento satelital, Machine Learning e alertas em tempo real —
               protegendo ecossistemas oceânicos através da tecnologia espacial.
             </p>
