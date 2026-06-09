@@ -14,7 +14,6 @@ export const listaIntegrantes: Integrante[] = [
     github: 'https://github.com/luisrodriguesss',
     linkedin: 'https://www.linkedin.com/in/luis-seripieri-1bb360395/',
     cargo: 'Front-end Developer',
-    descricao: 'Estudante apaixonado por tecnologia e impacto social.',
   },
   {
     id: 'kichimoto',
@@ -25,7 +24,6 @@ export const listaIntegrantes: Integrante[] = [
     github: 'https://github.com/luizkichimoto',
     linkedin: 'https://www.linkedin.com/feed/',
     cargo: 'Back-end Developer',
-    descricao: 'Desenvolvedor focado em criar interfaces modernas e acessiveis.',
   },
   {
     id: 'kenji',
@@ -36,7 +34,6 @@ export const listaIntegrantes: Integrante[] = [
     github: 'https://github.com/KenjiFW13',
     linkedin: 'https://www.linkedin.com/in/kenji-fernandes-wakabayashi/',
     cargo: 'Back-end Developer',
-    descricao: 'Desenvolvedor focado em criar interfaces modernas e acessiveis.',
   },
   {
     id: 'gabriel',
@@ -47,6 +44,5 @@ export const listaIntegrantes: Integrante[] = [
     github: 'https://github.com/GabrielCreates',
     linkedin: 'https://www.linkedin.com/feed/',
     cargo: 'Data Engineer',
-    descricao: 'Entusiasta de design e desenvolvimento web com foco em UX.',
   },
 ]

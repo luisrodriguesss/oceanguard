@@ -7,7 +7,6 @@ export interface Integrante {
   github: string
   linkedin: string
   cargo: string
-  descricao: string
 }
 
 export interface Navio {

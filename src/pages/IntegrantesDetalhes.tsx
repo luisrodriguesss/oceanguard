@@ -75,7 +75,6 @@ export default function IntegrantesDetalhes() {
           <p className="text-sm text-teal-600 mt-1">{integrante.cargo}</p>
           <p className="text-xs text-gray-500 mt-1">{integrante.rm}</p>
           <p className="text-xs text-gray-500">{integrante.turma}</p>
-          <p className="mt-4 text-sm text-gray-600 md:text-base">{integrante.descricao}</p>
         </div>
 
         <div className="mt-6 flex justify-center gap-4">
