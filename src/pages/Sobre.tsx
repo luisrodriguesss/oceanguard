@@ -21,7 +21,7 @@ const sections = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
       </svg>
     ),
-    content: 'O OceanGuard é uma plataforma de inteligência marítima que cruza dados de rastreamento satelital AIS com análise comportamental via Machine Learning. O sistema identifica automaticamente embarcações em pesca ativa dentro de áreas protegidas e gera alertas em tempo real para gestores e órgãos ambientais.',
+    content: 'A Defesa Azul é uma plataforma de inteligência marítima que cruza dados de rastreamento satelital AIS com análise comportamental via Machine Learning. O sistema identifica automaticamente embarcações em pesca ativa dentro de áreas protegidas e gera alertas em tempo real para gestores e órgãos ambientais.',
   },
   {
     title: 'Impacto Esperado',
