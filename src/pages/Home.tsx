@@ -99,7 +99,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
             {stats.map((s) => (
-              <div key={s.label} className="text-center">
+              <div key={s.label} className="text-center bg-white/50 rounded-xl py-6 px-4 border border-teal-200">
                 <p className="text-3xl sm:text-4xl font-bold text-teal-600 mb-1">{s.value}</p>
                 <p className="text-sm font-semibold text-teal-900 mb-1">{s.label}</p>
                 <p className="text-xs text-teal-700">{s.desc}</p>
@@ -148,9 +148,9 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-5">
             {techs.map((tech) => (
-              <div key={tech.name} className={`${tech.bg} border rounded-xl p-4 text-center hover:scale-105 transition-transform`}>
+              <div key={tech.name} className={`${tech.bg} border rounded-xl p-4 text-center shadow-sm hover:scale-105 hover:shadow-md transition-all duration-200`}>
                 <p className={`text-sm font-bold ${tech.color} mb-1`}>{tech.name}</p>
                 <p className="text-xs text-gray-500">{tech.role}</p>
               </div>
