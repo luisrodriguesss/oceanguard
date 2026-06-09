@@ -56,10 +56,10 @@ export default function FAQ() {
             Perguntas <span className="text-teal-500">frequentes</span>
           </h1>
           <p className="text-teal-700 max-w-xl mx-auto">
-            Tudo o que você precisa saber sobre o OceanGuard,
+            Tudo o que você precisa saber sobre o Defesa Azul,
             a pesca ilegal e como o sistema funciona.
           </p>
-        </div>
+        </div>  
       </section>
 
       <section className="py-20 bg-white">
