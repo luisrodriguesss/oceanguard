@@ -8,7 +8,7 @@ export default function Footer() {
 
           <div>
             <p className="text-sm font-semibold text-gray-900 mb-1.5">
-              Ocean<span className="text-teal-600">Guard</span>
+              Defesa<span className="text-teal-600">Azul</span>
             </p>
             <p className="text-sm text-gray-500 leading-relaxed">
               Plataforma de inteligência marítima para combate à pesca ilegal
@@ -53,7 +53,7 @@ export default function Footer() {
 
         <div className="border-t border-gray-100 mt-5 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <p className="text-xs text-gray-400">
-            © 2026 OceanGuard. Desenvolvido para Global Solution FIAP.
+            © 2026 Defesa Azul. Desenvolvido para Global Solution FIAP.
           </p>
           <span className="flex items-center gap-1.5 text-xs text-gray-400">
             <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />

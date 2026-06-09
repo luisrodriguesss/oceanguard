@@ -21,7 +21,7 @@ const sections = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" />
       </svg>
     ),
-    content: 'O OceanGuard é uma plataforma de inteligência marítima que cruza dados de rastreamento satelital AIS com análise comportamental via Machine Learning. O sistema identifica automaticamente embarcações em pesca ativa dentro de áreas protegidas e gera alertas em tempo real para gestores e órgãos ambientais.',
+    content: 'A Defesa Azul é uma plataforma de inteligência marítima que cruza dados de rastreamento satelital AIS com análise comportamental via Machine Learning. O sistema identifica automaticamente embarcações em pesca ativa dentro de áreas protegidas e gera alertas em tempo real para gestores e órgãos ambientais.',
   },
   {
     title: 'Impacto Esperado',
@@ -33,7 +33,7 @@ const sections = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253" />
       </svg>
     ),
-    content: 'Com monitoramento contínuo de 26 milhões de km² da ZEE brasileira, o OceanGuard contribui diretamente para os ODS 14 (Vida abaixo da água) e 13 (Ação contra a mudança climática) da ONU, além de fortalecer a soberania nacional sobre recursos marinhos.',
+    content: 'Com monitoramento contínuo de 26 milhões de km² da ZEE brasileira, a Defesa Azul contribui diretamente para os ODS 14 (Vida abaixo da água) e 13 (Ação contra a mudança climática) da ONU, além de fortalecer a soberania nacional sobre recursos marinhos.',
   },
 ]
 
@@ -59,7 +59,7 @@ export default function Sobre() {
               <span className="block text-teal-500">dos oceanos</span>
             </h1>
             <p className="text-lg text-teal-700 leading-relaxed">
-              O OceanGuard nasceu da Global Solution 2026/1 da FIAP com o objetivo
+              A Defesa Azul nasceu da Global Solution 2026/1 da FIAP com o objetivo
               de aplicar inteligência artificial e dados satelitais no combate à
               pesca ilegal nas águas brasileiras.
             </p>

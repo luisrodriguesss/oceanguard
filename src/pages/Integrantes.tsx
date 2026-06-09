@@ -40,7 +40,7 @@ export default function Integrantes() {
         </h2>
         <p className="mt-2 text-sm text-gray-600 md:text-base">
           Somos um grupo de estudantes da FIAP apaixonados por tecnologia e sustentabilidade.
-          Desenvolvemos o OceanGuard para aplicar inteligência espacial no combate à pesca ilegal
+          Desenvolvemos o Defesa Azul para aplicar inteligência espacial no combate à pesca ilegal
           nas águas brasileiras.
         </p>
       </section>
