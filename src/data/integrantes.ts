@@ -23,7 +23,7 @@ export const listaIntegrantes: Integrante[] = [
     turma: '1TDSPB',
     foto: fotoKichimoto,
     github: 'https://github.com/luizkichimoto',
-    linkedin: 'https://www.linkedin.com/feed/',
+    linkedin: 'https://www.linkedin.com/in/luiz-felipe-kichimoto-valdevino-484489415/',
     cargo: 'Back-end Developer',
     descricao: 'Desenvolvedor focado em criar interfaces modernas e acessiveis.',
   },
